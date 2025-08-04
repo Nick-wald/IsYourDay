@@ -1,0 +1,1 @@
+import{a3 as a}from"./index-D_giRRmy.js";const s=({page:t,page_size:e})=>a.get("/account/manage",{params:{page:t,page_size:e}}),n=()=>a.get("/account/manage"),c=t=>a.get("/account/",{params:{pk:t}}),o=t=>a.post("/account/",t),u=(t,e)=>a.delete("/account/",{data:{pk:t,password:e}});export{o as a,n as b,u as d,c as f,s as g};

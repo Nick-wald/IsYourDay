@@ -1,0 +1,1 @@
+import{ag as o}from"./index-DIDOB8ms.js";const e=i=>o?window.requestAnimationFrame(i):setTimeout(i,16),r=i=>o?window.cancelAnimationFrame(i):clearTimeout(i),s=()=>o&&/firefox/i.test(window.navigator.userAgent);export{r as c,s as i,e as r};

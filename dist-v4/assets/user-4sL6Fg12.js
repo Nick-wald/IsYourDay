@@ -1,0 +1,1 @@
+import{s as e}from"./index-DIDOB8ms.js";const r=({page:t,page_size:a})=>e.get("/account/manage",{params:{page:t,page_size:a}}),n=()=>e.get("/account/manage"),c=t=>e.get("/account/",{params:{pk:t}}),o=t=>e.post("/account/",t),u=(t,a)=>e.delete("/account/",{data:{pk:t,password:a}});export{o as a,n as b,u as d,c as f,r as g};

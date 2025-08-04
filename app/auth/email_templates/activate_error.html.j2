@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>激活失败</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b6b, #ee5a24);
+        }
+        
+        .error-icon {
+            width: 80px;
+            height: 80px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            animation: bounceIn 0.6s ease-out;
+        }
+        
+        .error-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+        
+        .title {
+            color: #333;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+        
+        .error-details {
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+        
+        .error-details h3 {
+            color: #c53030;
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .error-details p {
+            color: #742a2a;
+            line-height: 1.6;
+        }
+        
+        .actions {
+            margin-top: 40px;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #333;
+            border: 2px solid #e9ecef;
+        }
+        
+        .btn-secondary:hover {
+            background: #e9ecef;
+            transform: translateY(-1px);
+        }
+        
+        .help-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 12px;
+            border-left: 4px solid #4299e1;
+            animation: fadeInUp 0.8s ease-out 1s both;
+        }
+        
+        .help-section h4 {
+            color: #2b6cb0;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .help-section ul {
+            text-align: left;
+            color: #2c5282;
+            line-height: 1.8;
+            padding-left: 20px;
+        }
+        
+        .contact-info {
+            margin-top: 30px;
+            padding: 20px;
+            background: #edf2f7;
+            border-radius: 12px;
+            animation: fadeInUp 0.8s ease-out 1.2s both;
+        }
+        
+        .contact-info h4 {
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info p {
+            color: #4a5568;
+            margin: 5px 0;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+            color: #999;
+            font-size: 14px;
+            animation: fadeInUp 0.8s ease-out 1.4s both;
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 40px 20px;
+                margin: 10px;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #ff6b6b;
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-icon">
+            <svg viewBox="0 0 24 24">
+                <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+            </svg>
+        </div>
+        
+        <div class="status-badge">❌ 激活失败</div>
+        
+        <h1 class="title">{{ error_title|default("激活失败") }}</h1>
+        <p class="subtitle">Opps，激活账户时出错啦XwX</p>
+        
+        <div class="error-details">
+            <h3>
+                ⚠️ 错误详情
+            </h3>
+            <p>{{ error_message|default("激活链接无效或已过期，请重新申请激活邮件。") }}</p>
+        </div>
+        
+        <div class="help-section">
+            <h4>💡 可能的解决方案</h4>
+            <ul>
+                <li>检查激活链接是否完整（避免被邮件客户端截断）</li>
+                <li>尝试重新申请激活邮件，注意激活有效期</li>
+                <li>检查垃圾邮件文件夹</li>
+                <li>确认邮箱地址是否正确，用户信息是否无误</li>
+            </ul>
+        </div>
+        
+        <div class="contact-info">
+            <h4>📞 需要帮助？</h4>
+            <p><strong>技术支持邮箱：</strong> {{ support_email|default("support@example.com") }}</p>
+            <p><strong>客服时间：</strong> 工作日 9:00-18:00</p>
+        </div>
+        
+        <div class="footer">
+            <p>🔒 如果您持续遇到问题，请保存此页面并联系我们</p>
+            <p>错误代码: ACT_ERROR_{{ error_code|default("001") }}</p>
+        </div>
+    </div>
+
+    <script>
+        // 记录错误信息用于调试
+        console.error('激活失败:', {
+            error: '{{ error_title }}',
+            message: '{{ error_message }}',
+            timestamp: new Date().toISOString()
+        });
+    </script>
+</body>
+</html>

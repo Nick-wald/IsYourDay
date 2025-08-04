@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密码重置失败</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #f093fb, #f5576c);
+        }
+        
+        .error-icon {
+            width: 80px;
+            height: 80px;
+            background: #f5576c;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        .title {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .error-details {
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .error-details h3 {
+            color: #c53030;
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .error-details p {
+            color: #718096;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+        }
+        
+        .help-info {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: left;
+        }
+        
+        .help-info h4 {
+            color: #2d3748;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        
+        .help-info ul {
+            color: #4a5568;
+            line-height: 1.6;
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .help-info li {
+            margin-bottom: 8px;
+        }
+        
+        .contact-info {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            color: #718096;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .title {
+                font-size: 28px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            .actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-icon">❌</div>
+        
+        <h1 class="title">{{ error_title }}</h1>
+        <p class="subtitle">很抱歉，密码重置过程中出现了问题</p>
+        
+        <div class="error-details">
+            <h3>⚠️ 错误详情</h3>
+            <p>{{ error_message }}</p>
+        </div>
+        
+        <div class="help-info">
+            <h4>💡 可能的解决方案</h4>
+            <ul>
+                <li>检查邮件中的重置链接是否完整</li>
+                <li>确认重置链接未超过5分钟有效期</li>
+                <li>重新申请密码重置邮件</li>
+                <li>清除浏览器缓存后重试</li>
+            </ul>
+        </div>
+        
+        <div class="contact-info">
+            <p>📧 如需帮助，请联系：{{ support_email }}</p>
+            <p>🕒 我们的技术支持团队将尽快为您解决问题</p>
+        </div>
+    </div>
+</body>
+</html>
